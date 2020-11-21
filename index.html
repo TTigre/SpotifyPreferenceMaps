@@ -6,25 +6,14 @@
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/jquery-jvectormap-2.0.5.min.js"></script>
   <script src="js/jquery-jvectormap-world-mill.js"></script>
+  <script src="js/paintmap.js"></script>
 </head>
 <body>
   <div id="world-map" style="width: 600px; height: 400px"></div>
+
   <script>
-    $(function(){
-        $('#world-map').vectorMap({
-            map: 'world_mill',
-            series: {
-                regions: [{
-                    values: gdpData,
-                    scale: ['#C8EEFF', '#0071A4'],
-                    normalizeFunction: 'polynomial'
-                }]
-            },
-            onRegionTipShow: function(e, el, code){
-                el.html(el.html()+' (GDP - '+gdpData[code]+')');
-            }
-        });
-    });
+    paintmap($,'#world-map',gdpData, ' (GDP - ',')')
   </script>
+
 </body>
 </html>
