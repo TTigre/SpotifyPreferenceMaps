@@ -1,0 +1,57 @@
+body{
+    background-color: whitesmoke;
+}
+
+h1{
+    text-align: center;
+}
+
+section{
+    padding: 100px;
+}
+
+footer{
+    text-align: right;
+    background-color: darkblue;
+    color: whitesmoke;
+}
+
+nav{
+    background-color: #333;
+    color: whitesmoke;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  nav ul li a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  
+  /* Change the nav color on hover */
+  nav ul li a:hover {
+    background-color: #111;
+  }
+  
+.maps{
+    width: auto;
+    height: auto;
+    padding-top: 50px;
+}
+
+.Even{
+    background-color: blue;
+    color: whitesmoke;
+}
+
