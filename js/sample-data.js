@@ -183,3 +183,13 @@ var gdpData = {
   "ZM": 15.69,
   "ZW": 5.57
 };
+
+var languajesData= [
+        { key:'jQuery', value: 100 },
+        { key:'JavaScript', value: 95 },
+        { key:'HTML', value: 96 },
+        { key:'CSS', value: 44 },
+        { key:'AngularJS', value: 32 },
+        { key:'ReactJS', value: 130 },
+        { key:'VueJS', value: 91 }
+  ];
