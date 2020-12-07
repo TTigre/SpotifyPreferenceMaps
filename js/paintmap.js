@@ -4,10 +4,11 @@ paintmap=(function($, id, datos, prefijoAMostrar, sufijoAMostrar){              
         series: {
             regions: [{
                 values: datos,
-                scale: ['#C8EEFF', '#0071A4'],
+                scale: ['#0000FF', '#000000'],
                 normalizeFunction: 'polynomial'
             }]
         },
+        backgroundColor: "#00000000",
         onRegionTipShow: function(e, el, code){
             el.html(el.html()+prefijoAMostrar+gdpData[code]+sufijoAMostrar);
         }
@@ -20,10 +21,11 @@ paintmapWithClick=(function($, id, datos, prefijoAMostrar, sufijoAMostrar, click
         series: {
             regions: [{
                 values: datos,
-                scale: ['#C8EEFF', '#0071A4'],
+                scale: ['#0000FF', '#000000'],
                 normalizeFunction: 'polynomial'
             }]
         },
+        backgroundColor: "#00000000",
         onRegionClick:clickfunction,
         onRegionTipShow: function(e, el, code){
             el.html(el.html()+prefijoAMostrar+gdpData[code]+sufijoAMostrar);
