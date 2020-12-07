@@ -50,7 +50,11 @@
   </footer>
 
   <script>
-    paintmap($,'#world-map',gdpData, ' (GDP - ',')')
+    temp=(function(event, code){
+      console.log("event: "+event+",\n code: "+code);
+      
+    })
+    paintmapWithClick($,'#world-map',gdpData, ' (GDP - ',')',temp)
   </script>
 
 </body>

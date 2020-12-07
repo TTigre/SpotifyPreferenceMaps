@@ -13,3 +13,20 @@ paintmap=(function($, id, datos, prefijoAMostrar, sufijoAMostrar){              
         }
     });
 });
+
+paintmapWithClick=(function($, id, datos, prefijoAMostrar, sufijoAMostrar, clickfunction){                                                                                //Mapas por José Gabriel Navarro Comabella C412
+    $(id).vectorMap({
+        map: 'world_mill',
+        series: {
+            regions: [{
+                values: datos,
+                scale: ['#C8EEFF', '#0071A4'],
+                normalizeFunction: 'polynomial'
+            }]
+        },
+        onRegionClick:clickfunction,
+        onRegionTipShow: function(e, el, code){
+            el.html(el.html()+prefijoAMostrar+gdpData[code]+sufijoAMostrar);
+        }
+    });
+});
