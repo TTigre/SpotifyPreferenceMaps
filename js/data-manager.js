@@ -39,15 +39,28 @@ function getCountryArtistsArray(code) {
 
 function getCountryArtists(code) {
     let artistScoreArray = getCountryArtistsArray(code);
-    artistScoreArray.length = count< artistScoreArray ? count : artistScoreArray.length;
-    score = artistScoreArray;
+    let n = artistScoreArray.length;
+    if (count < artistScoreArray.length)
+        n = count;
+
+    score = []
+    for (let i = 0; i < n; i++) {
+        score.push(artistScoreArray[i]);
+    }
     createButtons();
 }
 
 function createButtons() {
-    if (score != undefined && score.length == 0) return;
+    let buttonsDiv = document.getElementById("artists-buttons");
+    buttonsDiv.innerHTML = '';
 
-    let buttonsDiv = document.getElementById("artistsButtons")
+    if (!score || (score != undefined && score.length == 0)) {
+        document.getElementById("empty-message").innerHTML = '<p>No se tienen datos de este país</p>';
+        document.getElementById("bar-graph").innerHTML = '';
+        return;
+    }
+
+    document.getElementById("empty-message").innerHTML = '';
 
     for (let i = 0; i < score.length; i++) {
         let artist = score[i][0];
@@ -56,7 +69,6 @@ function createButtons() {
         button.setAttribute('class', 'button button-rounded-8px');
         button.appendChild(text);
         button.addEventListener('click', function(){
-            console.log(artist, currentCode);
             createGraphOf(artist);
         });
         buttonsDiv.appendChild(button);
@@ -64,7 +76,6 @@ function createButtons() {
 }
 
 function createGraphOf(artist) {
-    console.log('graph')
     let data = []
 
     artist_data_2020 = top_artists_2020[currentCode][artist] | 0;
