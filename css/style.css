@@ -60,6 +60,11 @@ nav ul {
   nav ul li a:hover {
     background-color: rgb(0, 0, 17);
   }
+
+  #bar-graph{
+      padding: 200px;
+  }
+
   
 .maps{
     width: auto;
