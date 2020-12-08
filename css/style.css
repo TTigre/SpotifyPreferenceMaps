@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background-image: linear-gradient(to bottom right, blue, cyan);
     background-repeat: no-repeat;
@@ -63,6 +67,25 @@ nav ul {
     padding-top: 50px;
 }
 
+
+.button {
+    background-color: #4cb2ec; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-rounded-2px {border-radius: 2px;}
+.button-rounded-4px {border-radius: 4px;}
+.button-rounded-8px {border-radius: 8px;}
+.button-rounded-12px {border-radius: 12px;}
+.button-rounded-50 {border-radius: 50%;}
 /* .Even{
     background-color: blue;
     color: whitesmoke;
