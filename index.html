@@ -1,7 +1,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Spotify</title>
+  <title>Exitos de la cuarentena Spotify</title>
   <link rel="stylesheet" href="css/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/jquery.simple-bar-graph.min.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
@@ -32,18 +32,18 @@
     </ul>
   </nav>
   <div id="Intro" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Exitos de la cuarentena Spotify y su previa evolución</h1>
+    <h1>Éxitos de la cuarentena Spotify y su previa evolución</h1>
     <p>
       Qué es Spotify? Spotify es una aplicación multiplataforma sueco-estadounidense, empleada para la reproducción de música vía streaming. 
       Cuenta con un modelo de negocio «premium», un servicio gratuito básico y con publicidad; pero con características adicionales, 
-      con una mejor calidad de audio, a través de una suscripción de pago. Permite escuchar en «modo radio», buscando por artista, 
+      como una mejor calidad de audio, a través de una suscripción de pago. Permite escuchar en «modo radio», buscando por artista, 
       álbum o listas de reproducciones creadas por los propios usuarios.
     </p>
     <p>
-      A raiz de la pandemia del sar-cov-2, en los meses de marzo a septiembre han sido ha sido aplicada una cuarentena que, 
-      si bien no ha sido igual en todos lados, ha cambiado nuestra cotidianidad y como parte de esta la frecuencia con la que 
-      consumimos entretenimiento. Por si a alguien no le quedaba claro, Spotify llego para quedarse y para salvar la cuarentena de 
-      varios. Así que este artículo se muestra de forma interactiva la popularidad de los artistas en Spotify duarante este 2020 
+      A raíz de la pandemia del Sars-Cov-2, en los meses de marzo a septiembre ha sido aplicada una cuarentena que, 
+      si bien no se desarrolló igual en todos lados, ha cambiado nuestra cotidianidad y como parte de esta la frecuencia con la que 
+      consumimos entretenimiento. Por si a alguien no le quedaba claro, Spotify llegó para quedarse y para salvar la cuarentena de 
+      varios. Así que este artículo muestra de forma interactiva la popularidad de los artistas en Spotify duarante este 2020 
       y su comparación con años anteriores.
     </p>
   </div>
@@ -51,25 +51,25 @@
     <h1>Procedimiento</h1>
     <p>
       Para la obtención de los datos hicimos uso de los archivos csv que nos permite descargar del sitio 
-      <a href="https://spotifycharts.com/regional/global/daily/latest">Spotify Charts</a>, los cuales dan inforamción de los tops semanales o diarios 
-      de las canciones mas escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises de los años 2016, 
-      2017, 2018, 2019 y 2020 hasta octubre de este último. Primeramente obtuvimos pos cada semana el top 100 de las canciones mas escuchadas de la
+      <a href="https://spotifycharts.com/regional/global/daily/latest">Spotify Charts</a>, los cuales dan información de los tops semanales o diarios 
+      de las canciones más escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises de los años 2016, 
+      2017, 2018, 2019 y 2020 hasta octubre de este último. Primeramente obtuvimos por cada semana el top 100 de las canciones más escuchadas de la
       plataforma. Luego que teniamos el top 100, se procedió a ordenar a los artistas por años según la cantidad de veces que estuvieron en
-      este top. De esta forma definimos la popularidad de un artista en dependencia de la cantdad de veces que una de sus cancione ha estado en este top.
+      este top. De esta forma definimos la popularidad de un artista en dependencia de la cantidad de veces que una de sus canciones ha estado en este top.
     </p>
     <p>
-      Una vez escogido un país y un artista de su top se mostrara la prograsión de este a través de los años y de esta forma determinar que tan bien va su carrera. 
+      Una vez escogido un país y un artista de su top se mostrará la progresión de este a través de los años y de esta forma determinar que tan bien va su carrera. 
     </p>
   </div>
   <div id="Interaccion" class="Even" style="padding-left: 100px; padding-right: 100px;">
     <h1>Interactuando con los datos</h1>
     <p>
-      A continuación mostramos un mapa del mundo que nos servirá para escoger el pais del cual deseamos anlizar el top 10 de los artiastas mas escuchados en esa 
-      region en el 2020. De las regiones en blanco no se pudieron obtener datos.
+      A continuación mostramos un mapa del mundo que nos servirá para escoger el pais del cual deseamos analizar el top 10 de los artistas más escuchados en esa 
+      región en el 2020. De las regiones en blanco no se pudieron obtener datos.
     </p>
     <p>
-      Acto seguido apareceran debajo una serie de botones con los nombres de los artistas, los cuales al clickearse mostraran un grafico con su progreso a lo largo
-      de los ultimos 4 años.
+      Acto seguido aparecerán debajo una serie de botones con los nombres de los artistas, los cuales al clickearse mostrarán un gráfico con su progreso a lo largo
+      de los últimos 4 años.
     </p>
     
     <div id="world-map" class="maps"></div>
