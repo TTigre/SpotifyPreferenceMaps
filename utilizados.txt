@@ -1,0 +1,2 @@
+En este proyecto se utilizó el script de https://www.jqueryscript.net/chart-graph/animated-column-chart-array.html, así como jquery.
+Los datos ya se menciona su origen.
