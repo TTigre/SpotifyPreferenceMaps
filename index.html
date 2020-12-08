@@ -24,62 +24,70 @@
 <body onload="onLoad()">
   <nav>
     <ul>
-      <li><a href="#Intro">Indroducción</a></li>
-      <li><a href="#OpenSource">Open Source</a></li>
+      <li><a href="#Intro">Introducción</a></li>
       <li><a href="#Procedimiento">Procedimiento</a></li>
-      <li><a href="#Resultados">Resultados</a></li>
-      <li><a href="#Resultados">Observaciones</a></li>
+      <li><a href="#Interaccion">Interacción</a></li>
+      <li><a href="#OpenSource">Open Source</a></li>
       <li><a href="#Autores">Autores</a></li>
     </ul>
   </nav>
   <div id="Intro" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
     <h1>Exitos de la cuarentena Spotify y su previa evolución</h1>
-    <p>A raiz de la pandemia del coronavirus, en los meses de marzo a septiembre han sido ha sido aplicada una cuarentena que, 
+    <p>
+      Qué es Spotify? Spotify es una aplicación multiplataforma sueco-estadounidense, empleada para la reproducción de música vía streaming. 
+      Cuenta con un modelo de negocio «premium», un servicio gratuito básico y con publicidad; pero con características adicionales, 
+      con una mejor calidad de audio, a través de una suscripción de pago. Permite escuchar en «modo radio», buscando por artista, 
+      álbum o listas de reproducciones creadas por los propios usuarios.
+    </p>
+    <p>
+      A raiz de la pandemia del sar-cov-2, en los meses de marzo a septiembre han sido ha sido aplicada una cuarentena que, 
       si bien no ha sido igual en todos lados, ha cambiado nuestra cotidianidad y como parte de esta la frecuencia con la que 
       consumimos entretenimiento. Por si a alguien no le quedaba claro, Spotify llego para quedarse y para salvar la cuarentena de 
       varios. Así que este artículo se muestra de forma interactiva la popularidad de los artistas en Spotify duarante este 2020 
       y su comparación con años anteriores.
-      anteriores.
     </p>
   </div>
-  <div id="OpenSource" class="Even" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Open Source</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio fugiat nihil quia sunt recusandae! Quae dolor ab libero molestias officiis, nesciunt sequi voluptatum! Placeat, optio aliquid delectus nam accusamus odio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maiores tenetur nam, architecto dolores ab numquam libero placeat autem, molestiae dolore accusantium ut est ipsam ratione ducimus possimus excepturi quibusdam!</p>
-  </div>
   <div id="Procedimiento" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Procedimiento utilizado</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio fugiat nihil quia sunt recusandae! Quae dolor ab libero molestias officiis, nesciunt sequi voluptatum! Placeat, optio aliquid delectus nam accusamus odio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maiores tenetur nam, architecto dolores ab numquam libero placeat autem, molestiae dolore accusantium ut est ipsam ratione ducimus possimus excepturi quibusdam!</p>
+    <h1>Procedimiento</h1>
+    <p>
+      Para la obtención de los datos hicimos uso de los archivos csv que nos permite descargar del sitio 
+      <a href="https://spotifycharts.com/regional/global/daily/latest">Spotify Charts</a>, los cuales dan inforamción de los tops semanales o diarios 
+      de las canciones mas escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises de los años 2016, 
+      2017, 2018, 2019 y 2020 hasta octubre de este último. Primeramente obtuvimos pos cada semana el top 100 de las canciones mas escuchadas de la
+      plataforma. Luego que teniamos el top 100, se procedió a ordenar a los artistas por años según la cantidad de veces que estuvieron en
+      este top. De esta forma definimos la popularidad de un artista en dependencia de la cantdad de veces que una de sus cancione ha estado en este top.
+    </p>
+    <p>
+      Una vez escogido un país y un artista de su top se mostrara la prograsión de este a través de los años y de esta forma determinar que tan bien va su carrera. 
+    </p>
   </div>
-  <div id="Resultados" class="Even" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Resultados</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio fugiat nihil quia sunt recusandae! Quae dolor ab libero molestias officiis, nesciunt sequi voluptatum! Placeat, optio aliquid delectus nam accusamus odio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maiores tenetur nam, architecto dolores ab numquam libero placeat autem, molestiae dolore accusantium ut est ipsam ratione ducimus possimus excepturi quibusdam!</p>
+  <div id="Interaccion" class="Even" style="padding-left: 100px; padding-right: 100px;">
+    <h1>Interactuando con los datos</h1>
+    <p>
+      A continuación mostramos un mapa del mundo que nos servirá para escoger el pais del cual deseamos anlizar el top 10 de los artiastas mas escuchados en esa 
+      region en el 2020. De las regiones en blanco no se pudieron obtener datos.
+    </p>
+    <p>
+      Acto seguido apareceran debajo una serie de botones con los nombres de los artistas, los cuales al clickearse mostraran un grafico con su progreso a lo largo
+      de los ultimos 4 años.
+    </p>
     
     <div id="world-map" class="maps"></div>
     <div id="artists-buttons"></div>
     <div id="bar-graph"></div>
     <div id="empty-message"></div>
   </div>
-  <div id="Observaciones" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Observaciones</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio fugiat nihil quia sunt recusandae! Quae dolor ab libero molestias officiis, nesciunt sequi voluptatum! Placeat, optio aliquid delectus nam accusamus odio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maiores tenetur nam, architecto dolores ab numquam libero placeat autem, molestiae dolore accusantium ut est ipsam ratione ducimus possimus excepturi quibusdam!</p>
-  </div>
-  <div id="Autores" class="Even" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Conoce a los autores</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio fugiat nihil quia sunt recusandae! Quae dolor ab libero molestias officiis, nesciunt sequi voluptatum! Placeat, optio aliquid delectus nam accusamus odio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maiores tenetur nam, architecto dolores ab numquam libero placeat autem, molestiae dolore accusantium ut est ipsam ratione ducimus possimus excepturi quibusdam!</p>
-  </div>
-  <footer>
-    2020
-  </footer>
-
   
-  <!-- <script>
-    temp=(function(event, code){
-      console.log("event: "+event+",\n code: "+code);
-    });
-    paintmapWithClick($,'#world-map',gdpData, ' (GDP - ',')',temp);
-    paintbar($, '#bar-graph', languajesData);
-    getCountryArtists('ar', 25);
-  </script> -->
+  <div id="OpenSource" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
+    <h1>Open Source</h1>
+    <p>Puede acceder a los datos utilizado en el repositorio <a href="https://github.com/TTigre/SpotifyPreferenceMaps.git">aquí</a></p>
+  </div>
 
+  <div id="Autores" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
+    <h1>Conoce a los autores</h1>
+    <p ><a href="a.klever@estudiantes.matcom.uh.cu">Alejandro Klever Clemente</a> - <a href="https://github.com/alejandroklever">Github</a></p>
+    <p><a href="laura.tamayo@estudiantes.matcom.uh.cu">Laura Tamayo Blanco</a> - <a href="https://github.com/LauTB">Github</a></p>
+    <p><a href="j.navarro@estudiantes.matcom.uh.cu">José Gabriel Navarro Comabella</a> - <a href="https://github.com/TTigre">Github</a></p>
+  </div>
 </body>
 </html>

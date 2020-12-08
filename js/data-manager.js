@@ -14,6 +14,7 @@ function onLoad(){
 }
 
 function selectCountry(event, code) {
+    console.log(code);
     getCountryArtists(code.toLowerCase());
 }
 
