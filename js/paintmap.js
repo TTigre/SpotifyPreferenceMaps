@@ -10,7 +10,7 @@ paintmap=(function($, id, datos, prefijoAMostrar, sufijoAMostrar){              
         },
         backgroundColor: "#00000000",
         onRegionTipShow: function(e, el, code){
-            el.html(el.html()+prefijoAMostrar+gdpData[code]+sufijoAMostrar);
+            el.html(el.html());
         }
     });
 });
@@ -28,7 +28,7 @@ paintmapWithClick=(function($, id, datos, prefijoAMostrar, sufijoAMostrar, click
         backgroundColor: "#00000000",
         onRegionClick:clickfunction,
         onRegionTipShow: function(e, el, code){
-            el.html(el.html()+prefijoAMostrar+gdpData[code]+sufijoAMostrar);
+            el.html(el.html());
         }
     });
 });
