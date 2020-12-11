@@ -4,13 +4,13 @@ paintmap=(function($, id, datos, prefijoAMostrar, sufijoAMostrar){              
         series: {
             regions: [{
                 values: datos,
-                scale: ['#0000FF', '#000000'],
+                scale: ['#0000FF', '#000050'],
                 normalizeFunction: 'polynomial'
             }]
         },
         backgroundColor: "#00000000",
         onRegionTipShow: function(e, el, code){
-            el.html(el.html());
+            el.html(el.html() + " - "+hits[code]);
         }
     });
 });
@@ -21,14 +21,14 @@ paintmapWithClick=(function($, id, datos, prefijoAMostrar, sufijoAMostrar, click
         series: {
             regions: [{
                 values: datos,
-                scale: ['#0000FF', '#000000'],
+                scale: ['#0000FF', '#000050'],
                 normalizeFunction: 'polynomial'
             }]
         },
         backgroundColor: "#00000000",
         onRegionClick:clickfunction,
         onRegionTipShow: function(e, el, code){
-            el.html(el.html());
+            el.html(el.html() + " - "+hits[code]);
         }
     });
 });

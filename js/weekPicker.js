@@ -51,8 +51,8 @@ var setWeekCalendar = function(settingElement) {
         
         showOtherMonths: true,
         selectOtherMonths: true,
-        minDate: new Date(2020,2),
-        maxDate: new Date(2020,12),
+        minDate: new Date(2020,0,31),
+        maxDate: new Date(2020,9,1),
         changeMonth: true,
         showWeek: true,
         firstDay: 5,
