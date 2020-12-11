@@ -2,6 +2,9 @@
 <head>
   <meta charset="utf-8">
   <title>Exitos de la cuarentena Spotify</title>
+  <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="css/jquery-ui.structure.min.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="css/jquery-ui.theme.min.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/jquery.simple-bar-graph.min.css" type="text/css" media="screen"/>
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
@@ -13,6 +16,8 @@
   <script src="js/jquery.simple-bar-graph.min.js"></script>
   <script src="js/paintmap.js"></script>
   <script src="js/paintbar.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/weekPicker.js"></script>
   
   <script src="js/top-artists-2016.js"></script>
   <script src="js/top-artists-2017.js"></script>
@@ -71,6 +76,9 @@
       Acto seguido aparecerán debajo una serie de botones con los nombres de los artistas, los cuales al clickearse mostrarán un gráfico con su progreso a lo largo
       de los últimos 4 años.
     </p>
+
+    <!-- Mirar función setWeekCalendar en weekPicker.js -->
+    <input type="text" id="weekPicker1" />
     
     <div id="world-map" class="maps"></div>
     <div id="artists-buttons"></div>

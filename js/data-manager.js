@@ -10,6 +10,7 @@ function onLoad(){
             gdpData[keys[i]] = undefined;
         }
     }
+    convertToWeekPicker($("#weekPicker1"))
     paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
 }
 
