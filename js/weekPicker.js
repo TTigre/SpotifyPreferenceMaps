@@ -55,11 +55,16 @@ var setWeekCalendar = function(settingElement) {
         maxDate: new Date(2020,12),
         changeMonth: true,
         showWeek: true,
-        firstDay: 1,
+        firstDay: 5,
         onSelect: function(dateText, inst) {
             var datepickerValue = $(this).datepicker('getDate');
             var dateObj = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate());
             var weekNum = $.datepicker.iso8601Week(dateObj);
+            if(dateObj.getDay()<5 && dateObj.getDay()>0)
+            {
+                weekNum = weekNum - 1
+            }
+            //En este momento weekNum ya es el correcto
             if (weekNum < 10) {
                 weekNum = "0" + weekNum;
             }
@@ -71,8 +76,10 @@ var setWeekCalendar = function(settingElement) {
             var ywString = weekYear + '-' + weekNum;
             $(this).val(ywString);
             $(this).prev().html(ywString);
-            startDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay());
-            endDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay() + 6);
+            // Estas son las fechas seleccionadas. Usar preferiblemente la fecha de inicio
+            startDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay()-2);
+            console.log(startDate)
+            endDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay() + 4);
             selectCurrentWeek();
             $(this).data('datepicker').inline = true;
             globalAdditionalFunction(globalTriggeringElement);
