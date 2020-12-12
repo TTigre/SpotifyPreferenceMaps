@@ -1,9 +1,10 @@
 var count = 10;
 var currentWeek;
 var currentCode = 'ar';
+var element;
 var score;
 
-var month = [
+var months = [
     undefined,
     'Enero',
     'Febrero',
@@ -14,12 +15,9 @@ var month = [
     'Julio',
     'Agosto',
     'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre'
 ];
 
-var weeks_per_month = {
+var weeksPerMonth = {
     "Enero": [
             "2020-01-03--2020-01-10",
             "2020-01-10--2020-01-17",
@@ -87,8 +85,13 @@ function onLoad(){
             gdpData[keys[i]] = undefined;
         }
     }
-    convertToWeekPicker($("#weekPicker1"))
-    paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
+    createButtons();
+    // convertToWeekPicker($("#weekPicker1"));
+    // paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
+}
+
+function createBar() {
+
 }
 
 function selectCountry(event, code) {
@@ -122,27 +125,39 @@ function getCountryArtists(code) {
 }
 
 function createButtons() {
-    var buttonsDiv = document.getElementById("artists-buttons");
+    var buttonsDiv = document.getElementById("months");
     buttonsDiv.innerHTML = '';
+    for (var i = 1; i < months.length; i++) {
+        var month = months[i];
+        var dropdown = document.createElement('div');
+        dropdown.setAttribute('class', 'dropdown');
+        
+        var dropbtn = document.createElement('button');
+        var text = document.createTextNode(month);
+        dropbtn.setAttribute('class', 'button button-rounded-8px');
+        dropbtn.appendChild(text);
 
-    if (!score || (score != undefined && score.length == 0)) {
-        document.getElementById("empty-message").innerHTML = '<p>No se tienen datos de este país</p>';
-        document.getElementById("bar-graph").innerHTML = '';
-        return;
-    }
+        var dropdownContent = document.createElement('div');
+        dropdownContent.setAttribute('class', 'dropdown-content');
+        dropdownContent.setAttribute('style', 'left:0;');
 
-    document.getElementById("empty-message").innerHTML = '';
+        for (var j = 0; j < weeksPerMonth[month].length; j++) {
+            var week = weeksPerMonth[month][j];
+            var a = document.createElement('a');
+            a.appendChild(document.createTextNode(week));
+            a.addEventListener('click', function() {
+                currentWeek = week;
+                console.log(currentWeek);
+            });
+            dropdownContent.appendChild(a);
+        }
 
-    for (var i = 0; i < score.length; i++) {
-        var artist = score[i][0];
-        var button = document.createElement('button');
-        var text = document.createTextNode(artist);
-        button.setAttribute('class', 'button button-rounded-8px');
-        button.appendChild(text);
-        button.addEventListener('click', function(){
-            createGraphOf(artist);
-        });
-        buttonsDiv.appendChild(button);
+        dropdown.appendChild(dropbtn);
+        dropdown.appendChild(dropdownContent);
+        // button.addEventListener('click', function(){
+        //     createGraphOf(month);
+        // });
+        buttonsDiv.appendChild(dropdown);
     }
 }
 
@@ -159,3 +174,27 @@ function createGraphOf(artist) {
 
     paintbar($, '#bar-graph', data);
 }
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction(id) {
+    console.log(id);
+    if (element)
+        element.classList.toggle("show");
+    element = document.getElementById(id);
+    element.classList.toggle("show");
+}
+  
+// Close the dropdown if the user clicks outside of it
+// window.onclick = function(event) {
+//     if (!event.target.matches('.dropbtn')) {
+//         var dropdowns = document.getElementsByClassName("dropdown-content");
+//         var i;
+//         for (i = 0; i < dropdowns.length; i++) {
+//             var openDropdown = dropdowns[i];
+//             if (openDropdown.classList.contains('show')) {
+//                 openDropdown.classList.remove('show');
+//             }
+//         }
+//     }
+// };
