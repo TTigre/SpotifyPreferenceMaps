@@ -1,10 +1,10 @@
-var count = 10;
-var currentWeek;
-var currentCode = 'ar';
-var element;
-var score;
+let count = 10;
+let currentWeek;
+let currentCode = 'ar';
+let element;
+let score;
 
-var months = [
+let months = [
     undefined,
     'Enero',
     'Febrero',
@@ -17,7 +17,7 @@ var months = [
     'Septiembre',
 ];
 
-var weeksPerMonth = {
+let weeksPerMonth = {
     "Enero": [
             "2020-01-03--2020-01-10",
             "2020-01-10--2020-01-17",
@@ -78,16 +78,16 @@ var weeksPerMonth = {
 };
 
 function onLoad(){
-    var keys = Object.keys(gdpData);
-    for (var i = 0; i < keys.length; i++) {
-        var key = keys[i].toLowerCase();
-        if (!quarentine_hits[key]) {
-            gdpData[keys[i]] = undefined;
-        }
-    }
+    let keys = Object.keys(gdpData);
+    // for (let i = 0; i < keys.length; i++) {
+    //     let key = keys[i].toLowerCase();
+    //     if (!quarentine_hits[key]) {
+    //         gdpData[keys[i]] = undefined;
+    //     }
+    // }
     createButtons();
     // convertToWeekPicker($("#weekPicker1"));
-    // paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
+    paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
 }
 
 function createBar() {
@@ -95,12 +95,13 @@ function createBar() {
 }
 
 function selectCountry(event, code) {
+    return;
     getCountryArtists(code.toLowerCase());
 }
 
 function getHitsArray(code) {
     currentCode = code;
-    var hits = quarentine_hits[code];
+    let hits = quarentine_hits[code];
     if (!hits)
         hits = {};
     
@@ -112,89 +113,61 @@ function getGlobalHitsArray() {
 }
 
 function getCountryArtists(code) {
-    var hits = getHitsArray(code);
-    var n = hits.length;
+    let hits = getHitsArray(code);
+    let n = hits.length;
     if (count < hits.length)
         n = count;
 
     score = [];
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         score.push(hits[i]);
     }
     createButtons();
 }
 
 function createButtons() {
-    var buttonsDiv = document.getElementById("months");
+    let buttonsDiv = document.getElementById("months");
     buttonsDiv.innerHTML = '';
-    for (var i = 1; i < months.length; i++) {
-        var month = months[i];
-        var dropdown = document.createElement('div');
+    for (let i = 1; i < months.length; i++) {
+        let month = months[i];
+        let dropdown = document.createElement('div');
         dropdown.setAttribute('class', 'dropdown');
         
-        var dropbtn = document.createElement('button');
-        var text = document.createTextNode(month);
+        let dropbtn = document.createElement('button');
+        let text = document.createTextNode(month);
         dropbtn.setAttribute('class', 'button button-rounded-8px');
         dropbtn.appendChild(text);
 
-        var dropdownContent = document.createElement('div');
+        let dropdownContent = document.createElement('div');
         dropdownContent.setAttribute('class', 'dropdown-content');
-        dropdownContent.setAttribute('style', 'left:0;');
+        dropdownContent.setAttribute('style', 'left:0; width: 200px');
 
-        for (var j = 0; j < weeksPerMonth[month].length; j++) {
-            var week = weeksPerMonth[month][j];
-            var a = document.createElement('a');
+        for (let j = 0; j < weeksPerMonth[month].length; j++) {
+            let week = weeksPerMonth[month][j];
+            let a = document.createElement('a');
             a.appendChild(document.createTextNode(week));
             a.addEventListener('click', function() {
                 currentWeek = week;
-                console.log(currentWeek);
+                let keys = Object.keys(gdpData);
+                for (let k = 0; k < keys.length; k++) {
+                    let key = keys[k].toLowerCase();
+                    if (!quarentine_hits[key] || !quarentine_hits[key][currentWeek]) {
+                        hits[keys[k]] = 'Sin datos';                       
+                        gdpData[keys[k]] = undefined;
+                    } else {
+                        let hit = quarentine_hits[key][currentWeek][0];
+                        hits[keys[k]] = `${hit.song} -- ${hit.artist}`;                       
+                        gdpData[keys[k]] = gdpDataSaved[keys[k]];
+                    }
+                }
+                $("#world-map").empty();
+                paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
             });
             dropdownContent.appendChild(a);
         }
 
         dropdown.appendChild(dropbtn);
         dropdown.appendChild(dropdownContent);
-        // button.addEventListener('click', function(){
-        //     createGraphOf(month);
-        // });
         buttonsDiv.appendChild(dropdown);
     }
 }
-
-function createGraphOf(artist) {
-    var data = [];
-
-    artist_data_2020 = quarentine_hits[currentCode][artist] | 0;
-
-    data.push({key: '2020', value: artist_data_2020});
-    data.push({key: '2019', value: artist_data_2019});
-    data.push({key: '2018', value: artist_data_2018});
-    data.push({key: '2017', value: artist_data_2017});
-    data.push({key: '2016', value: artist_data_2016});
-
-    paintbar($, '#bar-graph', data);
-}
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction(id) {
-    console.log(id);
-    if (element)
-        element.classList.toggle("show");
-    element = document.getElementById(id);
-    element.classList.toggle("show");
-}
-  
-// Close the dropdown if the user clicks outside of it
-// window.onclick = function(event) {
-//     if (!event.target.matches('.dropbtn')) {
-//         var dropdowns = document.getElementsByClassName("dropdown-content");
-//         var i;
-//         for (i = 0; i < dropdowns.length; i++) {
-//             var openDropdown = dropdowns[i];
-//             if (openDropdown.classList.contains('show')) {
-//                 openDropdown.classList.remove('show');
-//             }
-//         }
-//     }
-// };
