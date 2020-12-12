@@ -170,7 +170,8 @@ function createButtons() {
                     textNode.innerText = '';
                     textNode.appendChild(
                         document.createTextNode(
-                            `La canción mas escuchada a nivel global es : ${quarentine_hits.global[currentWeek][0].song}`
+                            `La canción mas escuchada a nivel global durante esta semana fue: 
+                             ${quarentine_hits.global[currentWeek][0].song}${mapLabelSeparator} ${quarentine_hits.global[currentWeek][0].artist}`
                         )
                     );
                     $("#world-map").empty();
