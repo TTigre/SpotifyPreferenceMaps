@@ -44,26 +44,26 @@ nav ul {
     overflow: hidden;
     opacity: inherit;
     background-color: rgba(0, 0, 0, 0.2);
-  }
-  
-  nav ul li a {
+}
+
+nav ul li a {
     float: left;
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+}
   
   
-  /* Change the nav color on hover */
-  nav ul li a:hover {
+/* Change the nav color on hover */
+nav ul li a:hover {
     background-color: rgb(0, 0, 17);
-  }
+}
 
-  #bar-graph{
-      padding: 200px;
-  }
+#bar-graph{
+    padding: 200px;
+}
 
   
 .maps{
@@ -72,9 +72,22 @@ nav ul {
     padding-top: 50px;
 }
 
-
+/* Nice buttons */
 .button {
-    background-color: #4cb2ec; /* Green */
+    background-color: #4cb2ec; /* Nice blue */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.selected-button {
+    background-color: #000077; /* Nice blue */
     border: none;
     color: white;
     padding: 20px;
@@ -91,14 +104,38 @@ nav ul {
 .button-rounded-8px {border-radius: 8px;}
 .button-rounded-12px {border-radius: 12px;}
 .button-rounded-50 {border-radius: 50%;}
-/* .Even{
-    background-color: blue;
-    color: whitesmoke;
-} */
 
-.center {
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
-  }
+
+/* Dropdown Buttons */
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

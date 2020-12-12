@@ -1,9 +1,8 @@
-let count = 10;
-let currentWeek;
-let currentCode = 'ar';
-let element;
-let score;
+const mapLabelSeparator = ', de';
 
+let selectedMonthBtn;
+let selectedWeekBtn;
+let currentWeek = '2020-01-03--2020-01-10';  // First week of the year
 let months = [
     undefined,
     'Enero',
@@ -16,7 +15,6 @@ let months = [
     'Agosto',
     'Septiembre',
 ];
-
 let weeksPerMonth = {
     "Enero": [
             "2020-01-03--2020-01-10",
@@ -77,52 +75,63 @@ let weeksPerMonth = {
         ],
 };
 
-function onLoad(){
-    let keys = Object.keys(gdpData);
-    // for (let i = 0; i < keys.length; i++) {
-    //     let key = keys[i].toLowerCase();
-    //     if (!quarentine_hits[key]) {
-    //         gdpData[keys[i]] = undefined;
-    //     }
-    // }
+function onLoad() {
+    document.getElementById('top-text')
+        .appendChild(
+            document.createTextNode(
+                `La canción mas escuchada a nivel global durante esta semana fue: ${quarentine_hits.global[currentWeek][0].song}`
+            )
+        );
     createButtons();
-    // convertToWeekPicker($("#weekPicker1"));
-    paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
+    document.getElementById('months').firstChild.dispatchEvent(new Event('click'));
 }
 
-function createBar() {
-
-}
-
-function selectCountry(event, code) {
-    return;
-    getCountryArtists(code.toLowerCase());
-}
-
-function getHitsArray(code) {
-    currentCode = code;
-    let hits = quarentine_hits[code];
-    if (!hits)
-        hits = {};
-    
-    return hits[0];
-}
-
-function getGlobalHitsArray() {
-    return getHitsArray('global');
-}
-
-function getCountryArtists(code) {
-    let hits = getHitsArray(code);
-    let n = hits.length;
-    if (count < hits.length)
-        n = count;
-
-    score = [];
-    for (let i = 0; i < n; i++) {
-        score.push(hits[i]);
+function getHitsLabelsAndPercents(){
+    let label = {};
+    let percent = {};
+    let counter = {}
+    let totalOfCountries = 0
+    for (let i = 0; i < domains.length; i++) {
+        let domain = domains[i].toLowerCase();
+        if (!quarentine_hits[domain] || !quarentine_hits[domain][currentWeek])
+            label[domains[i]] = 'Sin Datos';
+        else {
+            totalOfCountries++;
+            let hit = quarentine_hits[domain][currentWeek][0];
+            label[domains[i]] = `${hit.song}${mapLabelSeparator} ${hit.artist}`;
+            if (counter[hit.song])
+                counter[hit.song]++;
+            else counter[hit.song] = 1;
+        }
     }
-    createButtons();
+
+    for (let i = 0; i < domains.length; i++) {
+        let domain = domains[i].toLowerCase();
+        if (!quarentine_hits[domain] || !quarentine_hits[domain][currentWeek]) {
+            percent[domains[i]] = undefined;
+            continue;
+        }
+
+        let hit = quarentine_hits[domain][currentWeek][0];
+        percent[domains[i]] =  (counter[hit.song] / totalOfCountries) * 100;
+    }
+    return [label, percent];
+}
+
+function createBar(labels, percents) {
+    const keys = Object.keys(percents);
+    const dataObj = {};
+    for (let i = 0; i < keys.length; i++)
+        if (labels[keys[i]] && percents[keys[i]])
+            dataObj[labels[keys[i]]] = percents[keys[i]].toFixed(2);
+
+    const sortedKeys = Object.keys(dataObj).sort((a, b) => dataObj[a] - dataObj[b]).reverse();
+
+    const data = sortedKeys.map(s => { return {key: s.split(mapLabelSeparator)[0].trim(), value: Math.round(dataObj[s])}});
+    data.length = 7;
+
+    $('#bar-graph').empty();
+    paintbar($, '#bar-graph', data);
 }
 
 function createButtons() {
@@ -130,44 +139,48 @@ function createButtons() {
     buttonsDiv.innerHTML = '';
     for (let i = 1; i < months.length; i++) {
         let month = months[i];
-        let dropdown = document.createElement('div');
-        dropdown.setAttribute('class', 'dropdown');
-        
-        let dropbtn = document.createElement('button');
-        let text = document.createTextNode(month);
-        dropbtn.setAttribute('class', 'button button-rounded-8px');
-        dropbtn.appendChild(text);
+        let monthBtn = document.createElement('button');
+        monthBtn.setAttribute('class', 'button button-rounded-8px');
+        monthBtn.appendChild(document.createTextNode(month));
+        monthBtn.addEventListener('click', () => {
+            if (selectedMonthBtn)
+                selectedMonthBtn.setAttribute('class', 'button button-rounded-8px')
+            selectedMonthBtn = monthBtn;
+            selectedMonthBtn.setAttribute('class', 'selected-button button-rounded-8px')
 
-        let dropdownContent = document.createElement('div');
-        dropdownContent.setAttribute('class', 'dropdown-content');
-        dropdownContent.setAttribute('style', 'left:0; width: 200px');
+            const weeksDiv = document.getElementById('weeks');
+            weeksDiv.innerHTML = '';
+            for (let j = 0; j < weeksPerMonth[month].length; j++) {
+                const week = weeksPerMonth[month][j];
+                const weekBtn = document.createElement('button');
+                weekBtn.setAttribute('class', 'button button-rounded-8px animated fadeInLeft');
+                weekBtn.appendChild(document.createTextNode(week.replace('--', ' - ')));
+                weekBtn.addEventListener('click', () => {
+                    if (selectedWeekBtn)
+                        selectedWeekBtn.setAttribute('class', 'button button-rounded-8px animated fadeInLeft')
+                    selectedWeekBtn = weekBtn;
+                    selectedWeekBtn.setAttribute('class', 'selected-button button-rounded-8px animated fadeInLeft')
 
-        for (let j = 0; j < weeksPerMonth[month].length; j++) {
-            let week = weeksPerMonth[month][j];
-            let a = document.createElement('a');
-            a.appendChild(document.createTextNode(week));
-            a.addEventListener('click', function() {
-                currentWeek = week;
-                let keys = Object.keys(gdpData);
-                for (let k = 0; k < keys.length; k++) {
-                    let key = keys[k].toLowerCase();
-                    if (!quarentine_hits[key] || !quarentine_hits[key][currentWeek]) {
-                        hits[keys[k]] = 'Sin datos';                       
-                        gdpData[keys[k]] = undefined;
-                    } else {
-                        let hit = quarentine_hits[key][currentWeek][0];
-                        hits[keys[k]] = `${hit.song} -- ${hit.artist}`;                       
-                        gdpData[keys[k]] = gdpDataSaved[keys[k]];
-                    }
-                }
-                $("#world-map").empty();
-                paintmapWithClick($, '#world-map', gdpData, ' (GDP - ',')', selectCountry);
-            });
-            dropdownContent.appendChild(a);
-        }
+                    currentWeek = week;
+                    const pair = getHitsLabelsAndPercents()
+                    const label = pair[0];
+                    const percent = pair[1];
 
-        dropdown.appendChild(dropbtn);
-        dropdown.appendChild(dropdownContent);
-        buttonsDiv.appendChild(dropdown);
+                    const textNode = document.getElementById('top-text');
+                    textNode.innerText = '';
+                    textNode.appendChild(
+                        document.createTextNode(
+                            `La canción mas escuchada a nivel global es : ${quarentine_hits.global[currentWeek][0].song}`
+                        )
+                    );
+                    $("#world-map").empty();
+                    paintmap($, '#world-map', percent, label);
+                    createBar(label, percent);
+                })
+                weeksDiv.appendChild(weekBtn);
+            }
+            weeksDiv.firstChild.dispatchEvent(new Event('click'));
+        })
+        buttonsDiv.appendChild(monthBtn);
     }
 }
