@@ -96,3 +96,15 @@ nav ul {
     color: whitesmoke;
 } */
 
+th span{
+    color: gray;
+}
+
+.ui-datepicker-week-col{
+    color: gray;
+}
+
+.ui-widget-content {
+    /* background: whitesmoke; */
+    /* background: cyan url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; */
+}
