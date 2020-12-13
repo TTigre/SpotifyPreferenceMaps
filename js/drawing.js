@@ -8,7 +8,7 @@ function paintmap ($, id, datos, labels, onclick=() => {}){
                 normalizeFunction: 'polynomial'
             }]
         },
-        backgroundColor: "#000000ff",
+        backgroundColor: "#E0E0E0",
         onRegionClick: onclick,
         onRegionTipShow: function(e, el, code){
             el.html(el.html() + ": " + labels[code]);

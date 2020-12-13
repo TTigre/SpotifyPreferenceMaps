@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exitos de la cuarentena Spotify</title>
 
   <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" type="text/css" media="screen"/>
@@ -36,18 +38,18 @@
   <script src="js/data-manager.js"></script>
 </head>
 <body onload="onLoad()">
-  <nav>
-    <ul>
-      <li><a href="#Intro">Introducción</a></li>
-      <li><a href="#Procedimiento">Procedimiento</a></li>
-      <li><a href="#Interaccion">Interacción</a></li>
-      <li><a href="#Resultados">Resultados</a></li>
-      <li><a href="#OpenSource">Open Source</a></li>
-      <li><a href="#Autores">Autores</a></li>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <ul class="row">
+      <li><a href="#Intro" class="col">Introducción</a></li>
+      <li><a href="#Procedimiento" class="col">Procedimiento</a></li>
+      <li><a href="#Interaccion" class="col">Interacción</a></li>
+      <li><a href="#Resultados" class="col">Resultados</a></li>
+      <li><a href="#OpenSource" class="col">Open Source</a></li>
+      <li><a href="#Autores" class="col">Autores</a></li>
     </ul>
   </nav>
   <div id="Intro" class="Even" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Éxitos de Spotify en la cuarentena Spotify</h1>
+    <h1 class="display-1">Éxitos de Spotify en la cuarentena</h1>
     <p>
       Durante la cuarentena producto pandemia por la Covid-19 Las plataformas de streaming han servido como fuente principal de entretenimiento.
       En este año han tenido creciente demanda de sus servicios y Spotify no se queda atras. Con una creciente de 15 millones de usuarios durante su primer semestre de
@@ -61,11 +63,16 @@
       <a href="https://spotifycharts.com/regional/global/daily/latest">Spotify Charts</a>, los cuales dan información de los tops semanales o diarios 
       de las canciones más escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises hasta octubre de este año.
       Con los datos en la mano creamos un mapa y un grafico que nos muestra dado una semana del año cual fue el número uno en los paises de los que tenemos datos y
-      el numero de reproducciones de las 10 primeras canciones de esa semana a nivel global.
+      el numero de reproducciones de las 10 primeras canciones de esa semana a nivel global. Además usamos datos sobre la cantidad de suscriptores, obtenido de Stadista.
     </p>
   </div>
   <div id="Interaccion" class="Even" style="padding-left: 50px; padding-right: 50px;">
-    <h1>Interactuando con los datos</h1>
+    <h1>Datos</h1>
+
+    <div class="mx-auto d-block" style="padding-bottom: 100px;">
+      <h2>Suscriptores de Spotify</h2>
+      <img class="mx-auto d-block" src="images/number of paying spotify subscribers.png" alt="Statistic: Number of Spotify premium subscribers worldwide from 1st quarter 2015 to 3rd quarter 2020 (in millions) | Statista" style="width: 100%; height: auto !important; max-width:1000px;-ms-interpolation-mode: bicubic;"/>
+    </div>
 
     <!--Week Selector-->
     <div class="row justify-content-center">
@@ -83,12 +90,12 @@
 
     <div class="row">
       <!--Graph-->
-      <div class="col-6">
+      <div class="col-xl-6">
         <svg id="graph" width="700" height="500" style="padding: 0"></svg>
       </div>
 
       <!--Map-->
-      <div class="col-6 justify-content-center">
+      <div class="col-xl-6 justify-content-center">
         <div id="world-map" class="maps" style="height: 500px; padding-top: 0; padding-bottom: 0;"></div>
       </div>
     </div>
@@ -99,7 +106,24 @@
   <div id="Resultados" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
     <h1>Resultados</h1>
     <p>
-      ...
+      Al analizar los datos se puede observar que las canciones en tendencia no variaron demasiado; con una predominancia en el top de 
+      las preferencias de países occidentales como Estados Unidos y el Reino Unido. Esto aunque tiene base en la cultura imperante también tiene relación
+      con el uso de Spotify por estos países.
+    </p>
+    <p>
+      Se puede observar que este período de tiempo no afectó de forma significativa la afluencia de suscriptores a Spotify.
+      Sin embargo el comportamiento de los tops varío ligeramente, implicando un cambio en la forma en que las personas escuchan música en la plataforma.
+      Se aprecia que al inicio de la pandemia los número 1 de cada semana usualmente tenían una gran ventaja con respecto al resto, posiblemente debido a que las personas tendían a llevarse más por la tendencia.
+      Sin embargo ahora la ventaja se ha reducido y el primero de la lista tiene también menos streamings.
+      Podría concluirse que la tendencia musical en la plataforma es menos fuerte de lo normal en los tops.
+      De esto se podría pensar que las personas se han guiado un poco menos por lo que es top 1 y han escuchado un repertorio musical más amplio.
+    </p>
+    <p>
+      El cambio de comportamiento en cuanto a las tendencias se puede deber al efecto del aislamiento relacionado con la actual pandemia.
+      Las personas puede se estén dedicando en cierta medida a explorar más en cuanto a gustos musicales y no se han guiado tanto por lo más escuchado, aunque sigue teniendo un gran peso.
+    </p>
+    <p>
+      Spotify no ha cambiado mucho, pero sí ha cambiado la forma de usarlo, la forma en que se elige qué escuchar.
     </p>
   </div>
   <div id="OpenSource" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
