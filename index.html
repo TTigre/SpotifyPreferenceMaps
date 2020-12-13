@@ -42,7 +42,7 @@
     <ul class="row">
       <li><a href="#Intro" class="col">Introducción</a></li>
       <li><a href="#Procedimiento" class="col">Procedimiento</a></li>
-      <li><a href="#Interaccion" class="col">Interacción</a></li>
+      <li><a href="#Interaccion" class="col">Datos</a></li>
       <li><a href="#Resultados" class="col">Resultados</a></li>
       <li><a href="#OpenSource" class="col">Open Source</a></li>
       <li><a href="#Autores" class="col">Autores</a></li>
@@ -63,18 +63,24 @@
       <a href="https://spotifycharts.com/regional/global/daily/latest">Spotify Charts</a>, los cuales dan información de los tops semanales o diarios 
       de las canciones más escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises hasta octubre de este año.
       Con los datos en la mano creamos un mapa y un grafico que nos muestra dado una semana del año cual fue el número uno en los paises de los que tenemos datos y
-      el numero de reproducciones de las 10 primeras canciones de esa semana a nivel global. Además usamos datos sobre la cantidad de suscriptores, obtenido de Stadista.
+      el numero de reproducciones de las 10 primeras canciones de esa semana a nivel global. Además usamos datos sobre la cantidad de suscriptores, obtenido de BusinessofApps relacionados a los suscriptores.
     </p>
   </div>
   <div id="Interaccion" class="Even" style="padding-left: 50px; padding-right: 50px;">
     <h1>Datos</h1>
 
     <div class="mx-auto d-block" style="padding-bottom: 100px;">
-      <h2>Suscriptores de Spotify</h2>
-      <img class="mx-auto d-block" src="images/number of paying spotify subscribers.png" alt="Statistic: Number of Spotify premium subscribers worldwide from 1st quarter 2015 to 3rd quarter 2020 (in millions) | Statista" style="width: 100%; height: auto !important; max-width:1000px;-ms-interpolation-mode: bicubic;"/>
+      <h2>Suscriptores de Spotify en el tiempo</h2>
+      <img class="mx-auto d-block" src="images/spotify-mau-vs-subs.png" style="width: 100%; height: auto !important; max-width:900px;-ms-interpolation-mode: bicubic;"/>
+    </div>
+
+    <div class="mx-auto d-block" style="padding-bottom: 100px;">
+      <h2>Suscriptores de Spotify por region</h2>
+      <img class="mx-auto d-block" src="images/spotify-mau-region-centre.png" style="width: 100%; height: auto !important; max-width:400px;-ms-interpolation-mode: bicubic;"/>
     </div>
 
     <!--Week Selector-->
+    <h2>Tops globales semanales</h2>
     <div class="row justify-content-center">
       <div class="row">
         <div id="months" class="animated fadeInRight"></div>
