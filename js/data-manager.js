@@ -76,12 +76,6 @@ let weeksPerMonth = {
 };
 
 function onLoad() {
-    document.getElementById('top-text')
-        .appendChild(
-            document.createTextNode(
-                `La canción mas escuchada a nivel global durante esta semana fue: ${quarentine_hits.global[currentWeek][0].song}`
-            )
-        );
     createButtons();
     document.getElementById('months').firstChild.dispatchEvent(new Event('click'));
 }
@@ -127,11 +121,28 @@ function createBar(labels, percents) {
 
     const sortedKeys = Object.keys(dataObj).sort((a, b) => dataObj[a] - dataObj[b]).reverse();
 
-    const data = sortedKeys.map(s => { return {key: s.split(mapLabelSeparator)[0].trim(), value: Math.round(dataObj[s])}});
-    data.length = 7;
+    // let data = sortedKeys.map(s => {
+    //     const key =  s.split(mapLabelSeparator)[0].trim();
+    //     const shortKey = key.length < 12 ? key : key.substr(0, 12) + '...';
+    //     return {
+    //         key: shortKey,
+    //         value: Math.round(dataObj[s]),
+    //         label: key + ' - ' + dataObj[s]
+    //     }
+    // });
 
-    $('#bar-graph').empty();
-    paintbar($, '#bar-graph', data);
+    let data = global[currentWeek]
+    data.length = 10;
+    data = data.map(x => {
+        const key =  x.song;
+        const shortKey = key.length < 12 ? key : key.substr(0, 12) + '...';
+        return {
+            key: shortKey,
+            value: x.streams,
+            label: key + ' - ' + x.streams
+        }
+    })
+    plot(data);
 }
 
 function createButtons() {
@@ -166,14 +177,10 @@ function createButtons() {
                     const label = pair[0];
                     const percent = pair[1];
 
-                    const textNode = document.getElementById('top-text');
-                    textNode.innerText = '';
-                    textNode.appendChild(
-                        document.createTextNode(
-                            `La canción mas escuchada a nivel global durante esta semana fue: 
-                             ${quarentine_hits.global[currentWeek][0].song}${mapLabelSeparator} ${quarentine_hits.global[currentWeek][0].artist}`
-                        )
-                    );
+                    const globalHit = quarentine_hits.global[currentWeek][0]
+                    const h5 = document.getElementById('top-text');
+                    h5.innerHTML = `La canción mas escuchada a nivel global durante esta semana fue: 
+                                    <a id="global-hit" href="${globalHit.url}">${globalHit.song}${mapLabelSeparator} ${globalHit.artist}</a>`;
                     $("#world-map").empty();
                     paintmap($, '#world-map', percent, label);
                     createBar(label, percent);

@@ -139,3 +139,7 @@ nav ul li a:hover {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+#global-hit{
+    color: #6f42c1;
+}

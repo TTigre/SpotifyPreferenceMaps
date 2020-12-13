@@ -25,11 +25,14 @@
   <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap/bootstrap.min.js"></script>
 
+  <!-- Plotting -->
+  <script src="js/d3.min.js"></script>
+
   <!-- Manipulación de Datos -->
   <script src="js/data.js"></script>
   <script src="js/drawing.js"></script>
   <script src="js/jquery-ui.min.js"></script>
-  <script src="js/weekPicker.js"></script>s
+<!--  <script src="js/weekPicker.js"></script>-->
   <script src="js/data-manager.js"></script>
 </head>
 <body onload="onLoad()">
@@ -38,24 +41,17 @@
       <li><a href="#Intro">Introducción</a></li>
       <li><a href="#Procedimiento">Procedimiento</a></li>
       <li><a href="#Interaccion">Interacción</a></li>
+      <li><a href="#Resultados">Resultados</a></li>
       <li><a href="#OpenSource">Open Source</a></li>
       <li><a href="#Autores">Autores</a></li>
     </ul>
   </nav>
-  <div id="Intro" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
-    <h1>Éxitos de la cuarentena Spotify y su previa evolución</h1>
+  <div id="Intro" class="Even" style="padding-left: 100px; padding-right: 100px;">
+    <h1>Éxitos de Spotify en la cuarentena Spotify</h1>
     <p>
-      Qué es Spotify? Spotify es una aplicación multiplataforma sueco-estadounidense, empleada para la reproducción de música vía streaming. 
-      Cuenta con un modelo de negocio «premium», un servicio gratuito básico y con publicidad; pero con características adicionales, 
-      como una mejor calidad de audio, a través de una suscripción de pago. Permite escuchar en «modo radio», buscando por artista, 
-      álbum o listas de reproducciones creadas por los propios usuarios.
-    </p>
-    <p>
-      A raíz de la pandemia del Sars-Cov-2, en los meses de marzo a septiembre ha sido aplicada una cuarentena que, 
-      si bien no se desarrolló igual en todos lados, ha cambiado nuestra cotidianidad y como parte de esta la frecuencia con la que 
-      consumimos entretenimiento. Por si a alguien no le quedaba claro, Spotify llegó para quedarse y para salvar la cuarentena de 
-      varios. Así que este artículo muestra de forma interactiva la popularidad de los artistas en Spotify duarante este 2020 
-      y su comparación con años anteriores.
+      Durante la cuarentena producto pandemia por la Covid-19 Las plataformas de streaming han servido como fuente principal de entretenimiento.
+      En este año han tenido creciente demanda de sus servicios y Spotify no se queda atras. Con una creciente de 15 millones de usuarios durante su primer semestre de
+      este año, segun publicaciones oficiales de la compañia, es conveniente saber cuales son las canciones mas escuchadas en este período.
     </p>
   </div>
   <div id="Procedimiento" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
@@ -63,54 +59,49 @@
     <p>
       Para la obtención de los datos hicimos uso de los archivos csv que nos permite descargar del sitio 
       <a href="https://spotifycharts.com/regional/global/daily/latest">Spotify Charts</a>, los cuales dan información de los tops semanales o diarios 
-      de las canciones más escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises de los años 2016, 
-      2017, 2018, 2019 y 2020 hasta octubre de este último. Primeramente obtuvimos por cada semana el top 100 de las canciones más escuchadas de la
-      plataforma. Luego que teniamos el top 100, se procedió a ordenar a los artistas por años según la cantidad de veces que estuvieron en
-      este top. De esta forma definimos la popularidad de un artista en dependencia de la cantidad de veces que una de sus canciones ha estado en este top.
-    </p>
-    <p>
-      Una vez escogido un país y un artista de su top se mostrará la progresión de este a través de los años y de esta forma determinar que tan bien va su carrera. 
+      de las canciones más escuchadas en la plataforma. De los csv fueron usados para el muestreo los tops 200 semanales por paises hasta octubre de este año.
+      Con los datos en la mano creamos un mapa y un grafico que nos muestra dado una semana del año cual fue el número uno en los paises de los que tenemos datos y
+      el numero de reproducciones de las 10 primeras canciones de esa semana a nivel global.
     </p>
   </div>
-  <div id="Interaccion" class="Even" style="padding-left: 100px; padding-right: 100px;">
+  <div id="Interaccion" class="Even" style="padding-left: 50px; padding-right: 50px;">
     <h1>Interactuando con los datos</h1>
-    <p>
-      A continuación mostramos un mapa del mundo que nos servirá para escoger el pais del cual deseamos analizar el top 10 de los artistas más escuchados en esa 
-      región en el 2020. De las regiones en blanco no se pudieron obtener datos.
-    </p>
-    <p>
-      Acto seguido aparecerán debajo una serie de botones con los nombres de los artistas, los cuales al clickearse mostrarán un gráfico con su progreso a lo largo
-      de los últimos 4 años.
-    </p>
-
-    <!-- Mirar función setWeekCalendar en weekPicker.js -->
-    <!-- <input type="text" id="weekPicker1" onchange="console.log(this);"/> -->
 
     <!--Week Selector-->
     <div class="row justify-content-center">
       <div class="row">
-        <div id="months" class="animated fadeInLeft"></div>
+        <div id="months" class="animated fadeInRight"></div>
       </div>
       <div class="row">
         <div id="weeks"></div>
       </div>
     </div>
 
-    <div id="top-text" class="text-center"></div>
+    <!--Header-->
+    <h5 id="top-text" class="text-center" style="padding-top: 25px; padding-bottom: 25px;"></h5>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-6 justify-content-center">
-          <div id="world-map" class="maps" style="height: 550px;"></div>
-        </div>
-        <div class="col-6 justify-content-center">
-          <div id="bar-graph" style="padding-left: 0; padding-right: 0;"></div>
-        </div>
+
+    <div class="row">
+      <!--Graph-->
+      <div class="col-6">
+        <svg id="graph" width="700" height="500" style="padding: 0"></svg>
+      </div>
+
+      <!--Map-->
+      <div class="col-6 justify-content-center">
+        <div id="world-map" class="maps" style="height: 500px; padding-top: 0; padding-bottom: 0;"></div>
       </div>
     </div>
-    <div id="empty-message"></div>
+
+
   </div>
-  
+
+  <div id="Resultados" class="Uneven" style="padding-left: 100px; padding-right: 100px;">
+    <h1>Resultados</h1>
+    <p>
+      ...
+    </p>
+  </div>
   <div id="OpenSource" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
     <h1>Open Source</h1>
     <p>Puede acceder a los datos utilizado en el repositorio <a href="https://github.com/TTigre/SpotifyPreferenceMaps.git">aquí</a></p>
