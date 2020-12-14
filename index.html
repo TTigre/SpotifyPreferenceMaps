@@ -48,7 +48,81 @@
       <li><a href="#Autores" class="col">Autores</a></li>
     </ul>
   </nav>
-  <div id="Intro" class="Even" style="padding-left: 100px; padding-right: 100px;">
+  <h1 class="display-1 container">Éxitos de Spotify en la cuarentena</h1>
+  <p class="container">
+    Durante la cuarentena, producto de la pandemia por la Covid-19. Las plataformas de streaming han servido como fuente principal de entretenimiento.
+    En este año han tenido creciente demanda de sus servicios. Spotify es la mayor de las especializadas en música en cuanto a cantidad de usuarios llegando a una cantidad de 286 millones de usuarios activos mensualmente,
+    lo cual le permite ocupar el 36% del sector. Y cuando algunas han tenido un crecimiento explosivo, es razonable preguntar: ¿Cómo le va a Spotify?
+  </p>
+  <img class="mx-auto d-block" src="images/statistic_id367739_spotifys-monthly-active-users-2015-2020.png" style="width: 100%; height: auto !important; max-width:900px;-ms-interpolation-mode: bicubic;"/>
+  <p class="container">
+    La cantidad de usuarios va bien, pero lleva un rato de esa forma, con un ritmo de alrededor de 16 millones de usuarios mensuales desde antes del impacto del SARS-COV-2. Sin embargo en el tercer trimestre de este año ha sido mayor con 20 millones usuarios más.
+    Así que se podría decir que no hubo mucho cambio en el ritmo de llegada de nuevos usuarios en esta plataforma.
+  </p>
+
+  <h2>Tops globales semanales</h2>
+  <div class="row justify-content-center">
+    <div class="row">
+      <div id="months" class="animated fadeInRight"></div>
+    </div>
+    <div class="row">
+      <div id="weeks"></div>
+    </div>
+  </div>
+
+  <h5 id="top-text" class="text-center" style="padding-top: 25px; padding-bottom: 25px;"></h5>
+
+
+  <div class="row">
+      <!-- Graph -->
+    <div class="col-xl-6">
+      <svg id="graph" width="700" height="500" style="padding: 0"></svg>
+    </div>
+
+      <!-- Map -->
+    <div class="col-xl-6 justify-content-center">
+      <div id="world-map" class="maps" style="height: 500px; padding-top: 0; padding-bottom: 0;"></div>
+    </div>
+  </div>
+
+  <p class="container">
+    Por lo que se puede ver el comportamiento de los tops semanales de esta plataforma han tenido pequeñas variaciones en este año.
+    En los primeros tops se observa que el top uno tiene cerca de 5 millones de streams y es posbile sobrepase al top 10 por alrededor de 2 millones.
+    Sin embargo a medida que avanza el año el primer lugar de este ranking es menos consumido y se mueve entre 4 y 3 millones;
+    además su diferencia con la décima posición es recortada significativamente. Moviéndose alrededor de 1 millón.
+  </p>
+  <p class="container">
+    Se denota una mayor diversidad en la música escuchada diferente a la tendencia principal, alejándose un poco de los números 1.
+    Circunstancia que se da probablemente debido a más usuarios explorando en la plataforma y a escuchar más música en circunstancias diferentes como trabajando desde casa, que no eran tan usuales con anterioridad.
+  </p>
+
+  <img class="mx-auto d-block" src="images/spotify-mau-region-centre.png" style="width: 100%; height: auto !important; max-width:500px;-ms-interpolation-mode: bicubic;"/>
+  
+  <p class="container">
+    Observando el mapa podemos ver la diferencia entre el top global y el top 1 de cada país cada semana.
+    El top del mundo suele coincidir con el de Estados Unidos y el Reino Unido, y con algunos otros países de Norteamérica y Europa.
+    Viendo que entre ambos cubren aproximadamente el 60% del uso mundial, tiene sentido tengan gran peso a la hora de marcar tendencia.
+  </p>
+  <p class="container">
+    Este año no ha sido precisamente mejor para la plataforma en comparación a anteriores desde el punto de vista de cantidad de usuarios aunque ha sido bueno, pero sus tendencias han tenido cierto cambio interesante, se ha propiciado una mayor diversidad musical.
+  </p>
+
+  <div id="OpenSource" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
+    <h1>Open Source</h1>
+    <p>Puede acceder a los datos utilizado en el repositorio <a href="https://github.com/TTigre/SpotifyPreferenceMaps.git">aquí</a></p>
+  </div>
+
+  <div id="Autores" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
+    <h1>Conoce a los autores</h1>
+    <p ><a href="a.klever@estudiantes.matcom.uh.cu">Alejandro Klever Clemente</a> - <a href="https://github.com/alejandroklever">Github</a></p>
+    <p><a href="laura.tamayo@estudiantes.matcom.uh.cu">Laura Tamayo Blanco</a> - <a href="https://github.com/LauTB">Github</a></p>
+    <p><a href="j.navarro@estudiantes.matcom.uh.cu">José Gabriel Navarro Comabella</a> - <a href="https://github.com/TTigre">Github</a></p>
+  </div>
+
+
+
+
+  <!-- <div id="Intro" class="Even" style="padding-left: 100px; padding-right: 100px;">
     <h1 class="display-1">Éxitos de Spotify en la cuarentena</h1>
     <p>
       Durante la cuarentena producto pandemia por la Covid-19 Las plataformas de streaming han servido como fuente principal de entretenimiento.
@@ -79,7 +153,7 @@
       <img class="mx-auto d-block" src="images/spotify-mau-region-centre.png" style="width: 100%; height: auto !important; max-width:400px;-ms-interpolation-mode: bicubic;"/>
     </div>
 
-    <!--Week Selector-->
+    Week Selector
     <h2>Tops globales semanales</h2>
     <div class="row justify-content-center">
       <div class="row">
@@ -90,17 +164,17 @@
       </div>
     </div>
 
-    <!--Header-->
+    Header
     <h5 id="top-text" class="text-center" style="padding-top: 25px; padding-bottom: 25px;"></h5>
 
 
     <div class="row">
-      <!--Graph-->
+      Graph
       <div class="col-xl-6">
         <svg id="graph" width="700" height="500" style="padding: 0"></svg>
       </div>
 
-      <!--Map-->
+      Map
       <div class="col-xl-6 justify-content-center">
         <div id="world-map" class="maps" style="height: 500px; padding-top: 0; padding-bottom: 0;"></div>
       </div>
@@ -142,6 +216,6 @@
     <p ><a href="a.klever@estudiantes.matcom.uh.cu">Alejandro Klever Clemente</a> - <a href="https://github.com/alejandroklever">Github</a></p>
     <p><a href="laura.tamayo@estudiantes.matcom.uh.cu">Laura Tamayo Blanco</a> - <a href="https://github.com/LauTB">Github</a></p>
     <p><a href="j.navarro@estudiantes.matcom.uh.cu">José Gabriel Navarro Comabella</a> - <a href="https://github.com/TTigre">Github</a></p>
-  </div>
+  </div> -->
 </body>
 </html>

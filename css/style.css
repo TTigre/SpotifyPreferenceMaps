@@ -24,6 +24,8 @@ h2{
 p{
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 section{
