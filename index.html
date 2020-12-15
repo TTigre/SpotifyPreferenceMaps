@@ -48,7 +48,7 @@
       <li><a href="#Autores" class="col">Autores</a></li>
     </ul>
   </nav>
-  <h1 class="display-1 container">Éxitos de Spotify en la cuarentena</h1>
+  <h1 id="TheTitle" class="display-3 container">Éxitos de Spotify en la cuarentena</h1>
   <p class="container">
     Durante la cuarentena, producto de la pandemia por la Covid-19. Las plataformas de streaming han servido como fuente principal de entretenimiento.
     En este año han tenido creciente demanda de sus servicios. Spotify es la mayor de las especializadas en música en cuanto a cantidad de usuarios llegando a una cantidad de 286 millones de usuarios activos mensualmente,
@@ -61,11 +61,11 @@
   </p>
 
   <h2>Tops globales semanales</h2>
-  <div class="row justify-content-center">
-    <div class="row">
+  <div class="row container justify-content-center">
+    <div class="row container">
       <div id="months" class="animated fadeInRight"></div>
     </div>
-    <div class="row">
+    <div class="row container">
       <div id="weeks"></div>
     </div>
   </div>
@@ -73,10 +73,10 @@
   <h5 id="top-text" class="text-center" style="padding-top: 25px; padding-bottom: 25px;"></h5>
 
 
-  <div class="row">
+  <div class="row container-fluid">
       <!-- Graph -->
-    <div class="col-xl-6">
-      <svg id="graph" width="700" height="500" style="padding: 0"></svg>
+    <div class="col-xl-6" style="max-width: 100%; overflow: auto;">
+      <svg id="graph" width="900" height="500" style="padding: 0"></svg>
     </div>
 
       <!-- Map -->
@@ -107,12 +107,12 @@
     Este año no ha sido precisamente mejor para la plataforma en comparación a anteriores desde el punto de vista de cantidad de usuarios aunque ha sido bueno, pero sus tendencias han tenido cierto cambio interesante, se ha propiciado una mayor diversidad musical.
   </p>
 
-  <div id="OpenSource" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
-    <h1>Open Source</h1>
+  <div id="OpenSource" class="container" style="padding-left: 100px; padding-right: 100px; text-align: center;">
+    <h1 class="container">Open Source</h1>
     <p>Puede acceder a los datos utilizado en el repositorio <a href="https://github.com/TTigre/SpotifyPreferenceMaps.git">aquí</a></p>
   </div>
 
-  <div id="Autores" class="Even" style="padding-left: 100px; padding-right: 100px; text-align: center;">
+  <div id="Autores" class="container" style="padding-left: 100px; padding-right: 100px; text-align: center;">
     <h1>Conoce a los autores</h1>
     <p ><a href="a.klever@estudiantes.matcom.uh.cu">Alejandro Klever Clemente</a> - <a href="https://github.com/alejandroklever">Github</a></p>
     <p><a href="laura.tamayo@estudiantes.matcom.uh.cu">Laura Tamayo Blanco</a> - <a href="https://github.com/LauTB">Github</a></p>

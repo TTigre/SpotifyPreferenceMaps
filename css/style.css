@@ -10,9 +10,15 @@ body{
     /* color: whitesmoke; */
 }
 
+@media(min-width: 601px){
+    h1{
+        padding: 100px;
+    }
+}
+
 h1{
     text-align: center;
-    padding: 100px;
+    /* padding: 100px; */
     padding-top: 150px;
     /* font-family: Arial, Helvetica, sans-serif; */
     /* font-weight: 300; */
