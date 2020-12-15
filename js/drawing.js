@@ -45,6 +45,7 @@ function plot(data){
             .attr('width', x.bandwidth() + 5)
             .attr("y", function(d) { return y(d.value) - 10; })
             .attr("height", function(d) { return height - y(d.value) + 10; });
+        scroll()
 
         g.append("text")
             .attr('class', 'val text-center')

@@ -87,8 +87,16 @@ nav ul li a:hover {
     padding-top: 50px;
 }
 
-#graph{
+#graphDiv{
     position: relative;
+    white-space: nowrap;
+}
+
+#graph{
+    display: inline-block;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    pointer-events: none;
 }
 /* Nice buttons */
 .button {
