@@ -106,8 +106,8 @@ function plot(data){
         .enter().append("rect")
         .attr("class", "bar")
         .attr("style", "fill: #002277")
-        // .on("mouseover", onMouseOver) //Add listener for the mouseover event
-        // .on("mouseout", onMouseOut)   //Add listener for the mouseout event
+        .on("mouseover", onMouseOver) //Add listener for the mouseover event
+        .on("mouseout", onMouseOut)   //Add listener for the mouseout event
         .attr("x", function(d) { return x(d.key); })
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x.bandwidth())
