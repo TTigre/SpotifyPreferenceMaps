@@ -169,3 +169,9 @@ nav ul li a:hover {
 #global-hit{
     color: #6f42c1;
 }
+
+@media(max-width: 600px){
+    h1{
+        font-size: 20px;
+    }
+}
